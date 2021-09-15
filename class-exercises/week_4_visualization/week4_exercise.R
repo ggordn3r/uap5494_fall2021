@@ -1,5 +1,5 @@
 # import the apple mobility data
-library(tidyverse)
+library(tidyverse) 
 
 # reshape to long form
 
