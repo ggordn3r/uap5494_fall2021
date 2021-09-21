@@ -18,7 +18,7 @@ response
 # Working with APIs in R can be tricky because the response is in Unicode.
 # This line just translates Unicode to a structure that is more readable
 # Fuller explanation here: https://www.dataquest.io/blog/r-api-tutorial/
-github_data = fromJSON(rawToChar(response$content))
+github_data <- fromJSON(rawToChar(response$content))
 
 # Now we can explore the data that we received and it's nicely organized like a dataframe
 names(github_data)
@@ -36,7 +36,7 @@ github_data$public_repos
 # Here is the documentation for the Census APIs: https://www.census.gov/data/developers/guidance/api-user-guide.Overview.html
 # This is one of their example queries, which returns the Hispanic population of each state.
 response <- GET("https://api.census.gov/data/2019/pep/charagegroups?get=NAME,POP&HISP=2&for=state:*")
-census_hisp = fromJSON(rawToChar(response$content))
+census_hisp <- fromJSON(rawToChar(response$content))
 # Notice the relationship between the columns you see in this table and the GET call made to the URL above.
 census_hisp
 
@@ -46,7 +46,7 @@ census_hisp
 # are called "wrappers". There is a nice wrapper for the US Census API in R called tidycensus.
 # documentation for tidycensus here: https://walker-data.com/tidycensus/articles/basic-usage.html
 
-# For most requests, the Census API requires a "key", kind of like a password. 
+# For most requests, the Census API requires a "key", kind of like a password.
 # You can register for one for free following the instructions in the handbook:
 # https://www.census.gov/content/dam/Census/library/publications/2020/acs/acs_api_handbook_2020_ch02.pdf
 
@@ -56,14 +56,16 @@ census_api_key(readChar("~/census_key.txt", 40), install = TRUE)
 
 # Instead of typing a long URL after GET(), tidycensus lets you use functions and arguments
 # to retrieve data. This also makes it easier to reuse variables in multiple data downloads.
-age10 <- get_decennial(geography = "state", 
-                       variables = "P013001", 
-                       year = 2010)
+age10 <- get_decennial(
+  geography = "state",
+  variables = "P013001",
+  year = 2010
+)
 
 head(age10)
 
 age10 %>%
-  ggplot(aes(x = value, y = reorder(NAME, value))) + 
+  ggplot(aes(x = value, y = reorder(NAME, value))) +
   geom_point()
 
 # here are some other interesting APIs to explore!
