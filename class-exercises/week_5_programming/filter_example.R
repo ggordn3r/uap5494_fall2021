@@ -15,3 +15,7 @@ gapminder %>% filter(country == c("Afghanistan", "Albania"), `year` == c(1952, 1
 gapminder %>% filter((country == "Afghanistan" | country == "Albania") & (year == 1952 | year == 1957))
 
 gapminder %>% filter(country %in% c("Afghanistan", "Albania") & year %in% c(1952, 1957))
+
+gapminder %>% filter(country == "Afghanistan" | country == "Albania") %>% filter(year == 1952 | year == 1957)
+
+View(gapminder)
