@@ -3,3 +3,9 @@
 library(tidyverse)
 
 # Hint: you should create a new variable before merging the two datasets.
+
+# Create a logit model using the rest of the variables to predict whether a wine is white or red.
+
+# Create a confusion matrix of your predictions vs. actual values.
+
+# Plot the log-likelihood as illustrated in the Statsquest video part 3.
